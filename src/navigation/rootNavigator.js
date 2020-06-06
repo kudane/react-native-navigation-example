@@ -9,7 +9,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeStackScreen from "../homeTab/index";
 import FavoriteStackScreen from "../favoriteTab/index";
 import SignInScreen from "../components/SignInScreen";
-import useAuthentication from "./useAuthentication";
+import useAuthentication, { AuthContext } from "./useAuthentication";
 //#endregion
 
 //#region App Container
@@ -32,13 +32,12 @@ const initialProps = {
   headerMode: "none",
 };
 const RootStack = createStackNavigator();
-const AuthContext = React.createContext();
 
 function RootNavigator() {
-  const { state, context } = useAuthentication();
+  const { state, authContext } = useAuthentication();
   return (
     <SafeAreaProvider>
-      <AuthContext.Provider value={context}>
+      <AuthContext.Provider value={authContext}>
         <NavigationContainer>
           <RootStack.Navigator {...initialProps}>
             {state.isSignin ? (

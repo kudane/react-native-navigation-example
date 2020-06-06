@@ -1,2 +1,6 @@
 import RootNavigator from "./navigation/rootNavigator";
-export default RootNavigator;
+import withLoading from "./loading/withLoading";
+
+export default function App(){
+    return withLoading(RootNavigator);
+};

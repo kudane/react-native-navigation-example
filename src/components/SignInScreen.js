@@ -1,9 +1,11 @@
-import * as React from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import React from "react";
+import { Button, TextInput, View } from "react-native";
 import { AuthContext } from "../navigation/rootNavigator";
+import { LoadingContext } from "../loading/useLoading";
 
-export default function SignInScreen({ navigation }) {
+export default function SignInScreen() {
   const { signIn } = React.useContext(AuthContext);
+  const { loadingStart, loadingEnd } = React.useContext(LoadingContext);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -20,7 +22,16 @@ export default function SignInScreen({ navigation }) {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title="Sign In" onPress={signIn} />
+      <Button
+        title="Sign In"
+        onPress={() => {
+          loadingStart();
+          setTimeout(() => {
+            signIn();
+            loadingEnd();
+          }, 1000);
+        }}
+      />
     </View>
   );
 }

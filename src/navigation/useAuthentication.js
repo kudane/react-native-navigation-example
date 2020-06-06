@@ -1,7 +1,10 @@
-import { useMemo, useReducer } from "react";
+import React from "react";
+
+const AuthContext = React.createContext();
+export { AuthContext };
 
 export default function useAuthentication() {
-  const [state, dispatch] = useReducer(
+  const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {
         case "SIGN_IN":
@@ -13,7 +16,7 @@ export default function useAuthentication() {
     { isSignin: false }
   );
 
-  const context = useMemo(
+  const authContext = React.useMemo(
     () => ({
       signIn: async (data) => {
         dispatch({ type: "SIGN_IN" });
@@ -25,6 +28,6 @@ export default function useAuthentication() {
 
   return {
     state,
-    context,
+    authContext,
   };
 }
