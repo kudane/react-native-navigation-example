@@ -5,26 +5,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-// tab screen
+//#region import other
 import HomeStackScreen from "../homeTab/index";
 import FavoriteStackScreen from "../favoriteTab/index";
-
-// common screen
 import SignInScreen from "../components/SignInScreen";
-
-// function
 import useAuthentication from "./useAuthentication";
+//#endregion
 
-const initialProps = {
-  initialRouteName: "SignIn",
-  mode: "modal",
-  headerMode: "none",
-  // screenOptions: {
-  //   cardStyle: { backgroundColor: "rgba(246, 248, 250, 0.75)" },
-  // },
-};
-
+//#region App Container
 const Tab = createBottomTabNavigator();
+
 function AppStackScreen() {
   return (
     <Tab.Navigator initialRouteName="Home">
@@ -33,11 +23,18 @@ function AppStackScreen() {
     </Tab.Navigator>
   );
 }
+//#endregion
 
+//#region Root Navigator
+const initialProps = {
+  initialRouteName: "SignIn",
+  mode: "modal",
+  headerMode: "none",
+};
 const RootStack = createStackNavigator();
 const AuthContext = React.createContext();
 
-export default function RootNavigator() {
+function RootNavigator() {
   const { state, context } = useAuthentication();
   return (
     <SafeAreaProvider>
@@ -55,5 +52,7 @@ export default function RootNavigator() {
     </SafeAreaProvider>
   );
 }
+//#endregion
 
+export default RootNavigator;
 export { AuthContext };
