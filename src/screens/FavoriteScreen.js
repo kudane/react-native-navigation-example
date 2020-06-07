@@ -5,10 +5,7 @@ function FavoriteScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text style={{ fontSize: 30 }}>This is the Favorite screen!</Text>
-      <Button
-        onPress={() => navigation.navigate("Loading")}
-        title="Open Modal"
-      />
+      <Button title="Open Modal" />
     </View>
   );
 }
