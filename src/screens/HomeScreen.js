@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, View, Button } from "react-native";
-import { AuthContext } from "../../navigation/rootNavigator";
-import { LoadingContext } from "../../loading/useLoading";
+import { AuthContext } from "../navigation/useAuthentication";
+import { LoadingContext } from "../loading/useLoading";
 
-export default function HomeScreen({ navigation }) {
+function HomeScreen({ navigation }) {
   const { signOut } = React.useContext(AuthContext);
   const { loadingStart, loadingEnd } = React.useContext(LoadingContext);
 
@@ -27,3 +27,6 @@ export default function HomeScreen({ navigation }) {
     </View>
   );
 }
+
+export default HomeScreen;
+export const HOME_ROUTE_NANE = "HOME";

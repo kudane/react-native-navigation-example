@@ -1,9 +1,8 @@
 import React from "react";
 
 const AuthContext = React.createContext();
-export { AuthContext };
 
-export default function useAuthentication() {
+function useAuthentication() {
   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {
@@ -31,3 +30,6 @@ export default function useAuthentication() {
     authContext,
   };
 }
+
+export default useAuthentication;
+export { AuthContext };

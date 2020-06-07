@@ -2,6 +2,18 @@ import React from "react";
 import { StyleSheet, View, Modal, ActivityIndicator } from "react-native";
 import useLoading, { LoadingContext } from "./useLoading";
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  modal: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "background: rgba(40, 44, 52, 0.175);",
+  },
+});
+
 export default function withLoading(WrappedComponent) {
   const { loading, loadingContext } = useLoading();
 
@@ -24,15 +36,3 @@ export default function withLoading(WrappedComponent) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  modal: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "background: rgba(40, 44, 52, 0.175);",
-  },
-});

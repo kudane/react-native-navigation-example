@@ -1,9 +1,8 @@
 import React from "react";
 
 const LoadingContext = React.createContext();
-export { LoadingContext };
 
-export default function useLoading() {
+function useLoading() {
   const [loading, setLoading] = React.useState(false);
 
   const loadingContext = React.useMemo(
@@ -19,3 +18,6 @@ export default function useLoading() {
     loadingContext,
   };
 }
+
+export default useLoading;
+export { LoadingContext };
