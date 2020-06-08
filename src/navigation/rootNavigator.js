@@ -4,10 +4,10 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-// Screens & Function
+// Screens & Function & Route
+import Route from './route';
 import useAuthentication, { AuthContext } from "./useAuthentication";
 import AppStackScreen from "./stackNavigator";
-import SignInScreen, { SIGNIN_ROUTE_NANE } from "../screens/SignInScreen";
 
 const initialProps = {
   initialRouteName: "SignIn",
@@ -25,13 +25,10 @@ export default function RootNavigator() {
         <NavigationContainer>
           <RootStack.Navigator {...initialProps}>
             {state.isSignin ? (
-              <RootStack.Screen name="Main" component={AppStackScreen} />
+              <RootStack.Screen name={Route.initialRouteName} component={AppStackScreen} />
             ) : (
-              <RootStack.Screen
-                name={SIGNIN_ROUTE_NANE}
-                component={SignInScreen}
-              />
-            )}
+                <RootStack.Screen {...Route.signIn} />
+              )}
           </RootStack.Navigator>
         </NavigationContainer>
       </AuthContext.Provider>
