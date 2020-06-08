@@ -1,42 +1,31 @@
-import SignInScreen from '../screens/SignInScreen';
-// Home tab
-import HomeScreen from '../screens/HomeScreen';
-import DetailsScreen from '../screens/DetailsScreen';
-// Favorite tab
-import FavoriteScreen from '../screens/FavoriteScreen';
+import DetailsScreen from "../screens/DetailsScreen";
+import FavoriteScreen from "../screens/FavoriteScreen";
+import HomeScreen from "../screens/HomeScreen";
+import SignInScreen from "../screens/SignInScreen";
 
-const Route = {
-    initialRouteName: "Main",
-    tab: {
-        home: {
-            name: "Home_Tab",
-            initialRouteName: "Home",
-            components: {
-                home: {
-                    name: "Home",
-                    component: HomeScreen,
-                },
-                details: {
-                    name: "Details",
-                    component: DetailsScreen,
-                },
-            }
-        },
-        favorite: {
-            name: "Favorite_Tab",
-            initialRouteName: "Favorite",
-            components: {
-                favorite: {
-                    name: "Favorite",
-                    component: FavoriteScreen,
-                },
-            },
-        },
-    },
-    signIn: {
-        name: "SignIn",
-        component: SignInScreen,
-    },
-}
+export default {
+  initialRouteName: "SIGNIN",
+  appRouteName: "MAIN",
+  homeRouteName: "HOME_TAB",
+  favoriteRouteName: "FAVORITE_TAB",
+};
 
-export default Route;
+export const HomeRoute = {
+  name: "HOME",
+  component: HomeScreen,
+};
+
+export const DetailsRoute = {
+  name: "DETAILS",
+  component: DetailsScreen,
+};
+
+export const FavoriteRoute = {
+  name: "FAVORITE",
+  component: FavoriteScreen,
+};
+
+export const SignInRoute = {
+  name: "SIGNIN",
+  component: SignInScreen,
+};

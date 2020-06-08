@@ -4,7 +4,7 @@ import { AuthContext } from "../navigation/useAuthentication";
 import { LoadingContext } from "../loading/useLoading";
 import * as api from "../functions/api";
 
-function SignInScreen() {
+export default function SignInScreen() {
   const { signIn } = React.useContext(AuthContext);
   const { loadingStart, loadingEnd } = React.useContext(LoadingContext);
   const [username, setUsername] = React.useState("");
@@ -35,6 +35,3 @@ function SignInScreen() {
     </View>
   );
 }
-
-export default SignInScreen;
-export const SIGNIN_ROUTE_NANE = "SignIn";

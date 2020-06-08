@@ -1,11 +1,11 @@
 class String {
   static isNullOrEmpty(inputString) {
-    return !inputString || inputString === "" ? true : false;
+    return !inputString || inputString === "";
   }
 }
 
 class Object {
   static isNullOrUndefined(inputObj) {
-    return !inputObj ? true : false;
+    return !inputObj;
   }
 }

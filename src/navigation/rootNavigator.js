@@ -1,21 +1,17 @@
-import "react-native-gesture-handler";
 import React from "react";
+import Route, { SignInRoute } from "./route";
+import AppStackScreen from "./stackNavigator";
+import useAuthentication, { AuthContext } from "./useAuthentication";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-// Screens & Function & Route
-import Route from './route';
-import useAuthentication, { AuthContext } from "./useAuthentication";
-import AppStackScreen from "./stackNavigator";
-
+const RootStack = createStackNavigator();
 const initialProps = {
-  initialRouteName: "SignIn",
+  ...Route.initialRouteName,
   mode: "modal",
   headerMode: "none",
 };
-
-const RootStack = createStackNavigator();
 
 export default function RootNavigator() {
   const { state, authContext } = useAuthentication();
@@ -25,10 +21,13 @@ export default function RootNavigator() {
         <NavigationContainer>
           <RootStack.Navigator {...initialProps}>
             {state.isSignin ? (
-              <RootStack.Screen name={Route.initialRouteName} component={AppStackScreen} />
+              <RootStack.Screen
+                name={Route.appRouteName}
+                component={AppStackScreen}
+              />
             ) : (
-                <RootStack.Screen {...Route.signIn} />
-              )}
+              <RootStack.Screen {...SignInRoute} />
+            )}
           </RootStack.Navigator>
         </NavigationContainer>
       </AuthContext.Provider>

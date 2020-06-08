@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, View, Modal, ActivityIndicator } from "react-native";
 import useLoading, { LoadingContext } from "./useLoading";
+import { StyleSheet, View, Modal, ActivityIndicator } from "react-native";
 
 const styles = StyleSheet.create({
   container: {

@@ -1,44 +1,37 @@
 import React from "react";
+import Route, { HomeRoute, DetailsRoute, FavoriteRoute } from "./route";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Route from './route';
 
-//#region Home Tab
 const HomeStack = createStackNavigator();
+const FavoriteStack = createStackNavigator();
+const TabStack = createBottomTabNavigator();
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator {...Route.tab.home.initialRouteName}>
-      <HomeStack.Screen {...Route.tab.home.components.home} />
-      <HomeStack.Screen {...Route.tab.home.components.details} />
+    <HomeStack.Navigator>
+      <HomeStack.Screen {...HomeRoute} />
+      <HomeStack.Screen {...DetailsRoute} />
     </HomeStack.Navigator>
   );
 }
-//#endregion
-
-//#region Favorite Tab
-const FavoriteStack = createStackNavigator();
 
 function FavoriteStackScreen() {
   return (
-    <FavoriteStack.Navigator {...Route.tab.favorite.initialRouteName}>
-      <FavoriteStack.Screen {...Route.tab.favorite.components.favorite} />
+    <FavoriteStack.Navigator>
+      <FavoriteStack.Screen {...FavoriteRoute} />
     </FavoriteStack.Navigator>
   );
 }
-//#endregion
 
-//#region App Container & Wrap all Tab
-const Tab = createBottomTabNavigator();
-
-function AppStackScreen() {
+export default function AppStackScreen() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen {...Route.tab.home.name} component={HomeStackScreen} />
-      <Tab.Screen {...Route.tab.favorite.name} component={FavoriteStackScreen} />
-    </Tab.Navigator>
+    <TabStack.Navigator>
+      <TabStack.Screen name={Route.homeRouteName} component={HomeStackScreen} />
+      <TabStack.Screen
+        name={Route.favoriteRouteName}
+        component={FavoriteStackScreen}
+      />
+    </TabStack.Navigator>
   );
 }
-//#endregion
-
-export default AppStackScreen;
