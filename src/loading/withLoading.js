@@ -14,6 +14,11 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * withLoading() is warp function, provide a `Loading Screen`
+ * Using `LoadingContext` from `useLoading.js` 
+ * retrieved `loadingStart()` and `loadingEnd()`
+ */
 export default function withLoading(WrappedComponent) {
   const { loading, loadingContext } = useLoading();
 

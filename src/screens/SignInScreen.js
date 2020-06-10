@@ -14,7 +14,7 @@ export default function SignInScreen() {
     loadingStart();
     const response = await api.get("");
     console.log(JSON.stringify(response));
-    signIn();
+    if (response) signIn();
     loadingEnd();
   };
 
